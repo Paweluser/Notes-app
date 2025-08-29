@@ -1,9 +1,8 @@
 'use client';
 
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import Lottie from 'lottie-react';
-
-type LottieAnimationData = Record<string, unknown>;
+import { LottieAnimationData } from '@/types/LottieTypes';
 
 export default function BackgroundLottie() {
 	const [data, setData] = useState<LottieAnimationData | null>(null);
@@ -15,14 +14,7 @@ export default function BackgroundLottie() {
 			.catch(console.error);
 	}, []);
 
-	const reduce = useMemo(
-		() =>
-			typeof window !== 'undefined' &&
-			window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches,
-		[]
-	);
-
-	if (!data || reduce) return null;
+	if (!data) return null;
 
 	return (
 		<div className="fixed inset-0 -z-10 pointer-events-none">
