@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import FormButtonPage from '../components/FormButtonPage';
+import SocialMediaLink from '@/components/SocialMediaLink';
 
 export default function Home() {
 	return (
@@ -11,36 +12,21 @@ export default function Home() {
 					</h1>
 				</div>
 				<div className="flex items-center justify-center text-[var(--second-color)] space-x-4 mt-5 text-xl md:mt-8 md:text-2xl">
-					<Link
-						href="/login"
-						className="border px-3 py-1 rounded-sm hover:text-[var(--main-color)] hover:bg-[var(--second-color)] transition-colors">
-						Log in
-					</Link>
+					<FormButtonPage href="/login">Log in</FormButtonPage>
 					<span className="h-full w-px bg-white" />
-					<Link
-						href="/signup"
-						className="border px-3 py-1 rounded-sm hover:text-[var(--main-color)] hover:bg-[var(--second-color)] transition-colors">
-						Sign up
-					</Link>
+					<FormButtonPage href="/signup">Sign up</FormButtonPage>
 				</div>
 			</div>
 			<p className="text-[var(--second-color)] text-xl md:text-2xl text-center">
 				Check my profiles:
 			</p>
 			<div className="flex justify-center mt-7 gap-10 md:mt-10 md:gap-14">
-				<a
-					href="https://github.com/Paweluser"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="">
+				<SocialMediaLink href="https://github.com/Paweluser">
 					<FaGithub className="h-18 w-18 md:h-20 md:w-20 text-[var(--third-color)] hover:scale-110 transition-transform" />
-				</a>
-				<a
-					href="https://github.com/Paweluser"
-					target="_blank"
-					rel="noopener noreferrer">
+				</SocialMediaLink>
+				<SocialMediaLink href="https://github.com/Paweluser">
 					<FaLinkedin className="h-18 w-18 md:h-20 md:w-20 text-[var(--third-color)] hover:scale-110 transition-transform" />
-				</a>
+				</SocialMediaLink>
 			</div>
 		</>
 	);
