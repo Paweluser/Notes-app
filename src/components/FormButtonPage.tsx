@@ -6,7 +6,7 @@ const FormButtonPage = ({ href, children }: NextLinkProps) => {
 	return (
 		<Link
 			href={href}
-			className="border px-3 py-1 rounded-sm hover:text-[var(--main-color)] hover:bg-[var(--second-color)] transition-colors">
+			className="text-[var(--second-color)] border px-3 py-1 rounded-sm hover:text-[var(--main-color)] hover:bg-[var(--second-color)] transition-colors">
 			{children}
 		</Link>
 	);

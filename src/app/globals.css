@@ -6,6 +6,11 @@
 	--third-color: #dca9f2;
 }
 
+@theme {
+	--breakpoint-2xs: 20rem;
+	--breakpoint-xs: 23rem;
+}
+
 body {
 	font-family: Arial, Helvetica, sans-serif;
 }
