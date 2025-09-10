@@ -3,7 +3,7 @@ import { Search } from 'lucide-react';
 
 export default function SearchEngine() {
 	return (
-		<div className="relative rounded-full bg-[var(--main-color)] py-4 px-2">
+		<div className="relative rounded-full py-4 px-2 mt-4 xl:mx-[22%] xl:mt-6">
 			<Search className="absolute left-5 top-1/2 -translate-y-1/2 pointer-events-none h-6 w-6 text-[var(--dark-color)]" />
 			<input
 				type="search"
