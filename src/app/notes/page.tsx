@@ -1,6 +1,6 @@
 import AddButton from '@/components/AddButton';
 import MenuButton from '@/components/MenuButton';
-import SearchEngine from '@/components/SearchEngine';
+import SearchBar from '@/components/SearchBar';
 
 export default function NotesPage() {
 	return (
@@ -11,7 +11,7 @@ export default function NotesPage() {
 				</h2>
 				<MenuButton />
 			</nav>
-			<SearchEngine />
+			<SearchBar />
 			<div className="relative flex gap-2 w-full h-2/3 mt-3 xl:w-2/3 xl:mx-auto xl:mt-6 bg-[var(--second-color)]/20 backdrop-blur rounded-2xl shadow-2xl">
 				<AddButton />
 			</div>

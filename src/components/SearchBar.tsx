@@ -1,7 +1,7 @@
 'use client';
 import { Search } from 'lucide-react';
 
-export default function SearchEngine() {
+export default function SearchBar() {
 	return (
 		<div className="relative rounded-full py-4 px-2 xl:mx-[22%] xl:mt-6">
 			<Search className="absolute left-5 top-1/2 -translate-y-1/2 pointer-events-none h-6 w-6 text-[var(--dark-color)]" />
