@@ -6,7 +6,7 @@ export default function MenuButton() {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	function handleToggleMenu() {
-		setIsOpen((prev) => !prev);
+		setIsOpen(true);
 	}
 
 	return (

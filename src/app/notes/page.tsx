@@ -9,12 +9,22 @@ import { useState } from 'react';
 
 export default function NotesPage() {
 	const [folders, setFolders] = useState<FolderTypes[]>([]);
+	const [showInput, setShowInput] = useState<boolean>(false);
+	const [newFolderName, setNewFolderName] = useState<FolderTypes['name']>('');
 
 	function handleAddClick() {
+		setShowInput(true);
+		setNewFolderName('');
+	}
+
+	function handleAddConfirm() {
+		if (!newFolderName.trim()) return;
 		setFolders((prev) => [
 			...prev,
-			{ id: crypto.randomUUID(), name: `Folder ${prev.length + 1}` },
+			{ id: crypto.randomUUID(), name: newFolderName },
 		]);
+		setNewFolderName('');
+		setShowInput(false);
 	}
 
 	function handleDelete(id: FolderTypes['id']) {
@@ -31,8 +41,32 @@ export default function NotesPage() {
 			</nav>
 			<SearchBar />
 			<div className="relative flex flex-col gap-2 w-full h-2/3 mt-3 xl:w-2/3 xl:mx-auto xl:mt-6 bg-[var(--second-color)]/20 backdrop-blur rounded-2xl shadow-2xl">
-				<AddButton onAdd={handleAddClick} />
-				<div className="mt-12">
+				{!showInput && <AddButton onAdd={handleAddClick} />}
+				{showInput && (
+					<div className="flex flex-wrap items-center gap-2 mt-2 mx-2 z-10 md:mx-28 md:mt-4 2xl:mx-40">
+						<input
+							type="text"
+							value={newFolderName}
+							onChange={(e) => setNewFolderName(e.target.value)}
+							placeholder="Enter folder name..."
+							className="flex-1 px-3 py-2 bg-white/10 text-[var(--third-color)] rounded-xl outline-none backdrop-blur-md placeholder:text-gray-300"
+						/>
+						<button
+							onClick={handleAddConfirm}
+							className="text-[var(--second-color)] border px-3 py-1 rounded-sm hover:text-[var(--main-color)] hover:bg-[var(--second-color)] transition-colors cursor-pointer">
+							Add
+						</button>
+						<button
+							onClick={() => setShowInput(false)}
+							className="text-[var(--second-color)] border px-3 py-1 rounded-sm hover:text-[var(--main-color)] hover:bg-[var(--second-color)] transition-colors cursor-pointer">
+							Cancel
+						</button>
+					</div>
+				)}
+				<div
+					className={`overflow-y-auto ${
+						showInput ? 'md:mt-1' : 'mt-10 md:mt-12'
+					}`}>
 					<FolderList folders={folders} onDelete={handleDelete} />
 				</div>
 			</div>
