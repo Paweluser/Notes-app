@@ -11,6 +11,8 @@ export default function NotesPage() {
 	const [folders, setFolders] = useState<FolderTypes[]>([]);
 	const [showInput, setShowInput] = useState<boolean>(false);
 	const [newFolderName, setNewFolderName] = useState<FolderTypes['name']>('');
+	const [editingId, setEditingId] = useState<FolderTypes['id'] | null>(null);
+	const [editedName, setEditedName] = useState<FolderTypes['name']>('');
 
 	function handleAddClick() {
 		setShowInput(true);
@@ -20,8 +22,8 @@ export default function NotesPage() {
 	function handleAddConfirm() {
 		if (!newFolderName.trim()) return;
 		setFolders((prev) => [
-			...prev,
 			{ id: crypto.randomUUID(), name: newFolderName },
+			...prev,
 		]);
 		setNewFolderName('');
 		setShowInput(false);
@@ -29,6 +31,14 @@ export default function NotesPage() {
 
 	function handleDelete(id: FolderTypes['id']) {
 		setFolders((prev) => prev.filter((f) => f.id !== id));
+	}
+
+	function handleRename(id: FolderTypes['id']) {
+		setFolders((prev) =>
+			prev.map((f) => (f.id === id ? { ...f, name: editedName || f.name } : f))
+		);
+		setEditingId(null);
+		setEditedName('');
 	}
 
 	return (
@@ -67,7 +77,18 @@ export default function NotesPage() {
 					className={`overflow-y-auto ${
 						showInput ? 'md:mt-1' : 'mt-10 md:mt-12'
 					}`}>
-					<FolderList folders={folders} onDelete={handleDelete} />
+					<FolderList
+						folders={folders}
+						onDelete={handleDelete}
+						onStartRename={(id, name) => {
+							setEditedName(name);
+							setEditingId(id);
+						}}
+						editingId={editingId}
+						onRenameConfirm={handleRename}
+						editedName={editedName}
+						setEditedName={setEditedName}
+					/>
 				</div>
 			</div>
 		</div>
