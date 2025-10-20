@@ -36,13 +36,13 @@ export function LeftPanel({
 				<button
 					type="button"
 					onClick={onLogout}
-					className="text-[var(--second-color)] border px-3 py-1 rounded-sm hover:text-[var(--main-color)] hover:bg-[var(--second-color)] transition-colors text-xl mt-3 md:text-2xl">
+					className="button-base text-xl mt-3 md:text-2xl">
 					Log out
 				</button>
 				<button
 					type="button"
 					onClick={onBack}
-					className="text-[var(--second-color)] border px-3 py-1 rounded-sm hover:text-[var(--main-color)] hover:bg-[var(--second-color)] transition-colors text-xl mt-3 md:text-2xl md:mt-5">
+					className="button-base text-xl mt-3 md:text-2xl md:mt-5">
 					Back
 				</button>
 			</section>

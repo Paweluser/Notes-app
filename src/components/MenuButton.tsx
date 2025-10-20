@@ -16,9 +16,9 @@ export default function MenuButton() {
 				type="button"
 				onClick={handleToggleMenu}
 				data-open={isOpen}>
-				<span className="block h-[2px] w-[25px] md:w-[35px] bg-[var(--second-color)] rounded-full"></span>
-				<span className="block h-[2px] w-[25px] md:w-[35px] bg-[var(--second-color)] rounded-full transition-transform duration-300 scale-x-80 group-hover:scale-x-100 origin-right"></span>
-				<span className="block h-[2px] w-[25px] md:w-[35px] bg-[var(--second-color)] rounded-full transition-transform duration-300 scale-x-60 group-hover:scale-x-100 origin-right"></span>
+				<span className="menu-line"></span>
+				<span className="menu-line transition-transform duration-300 scale-x-80 group-hover:scale-x-100 origin-right"></span>
+				<span className="menu-line transition-transform duration-300 scale-x-60 group-hover:scale-x-100 origin-right"></span>
 			</button>
 			<LeftPanel
 				avatarUrl="/Avatar.jpg"

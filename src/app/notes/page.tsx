@@ -44,7 +44,7 @@ export default function NotesPage() {
 	return (
 		<div className="flex flex-col h-full p-4">
 			<nav className="flex justify-between px-2 mb-3 xl:justify-around mt-3 lg:mt-5 xl:mt-14">
-				<h2 className="text-center bg-linear-65 from-purple-400 to-pink-200 bg-clip-text [-webkit-background-clip:text] text-transparent text-4xl md:text-5xl">
+				<h2 className="text-gradient">
 					Notes
 				</h2>
 				<MenuButton />
@@ -63,12 +63,12 @@ export default function NotesPage() {
 						/>
 						<button
 							onClick={handleAddConfirm}
-							className="text-[var(--second-color)] border px-3 py-1 rounded-sm hover:text-[var(--main-color)] hover:bg-[var(--second-color)] transition-colors cursor-pointer">
+							className="button-base">
 							Add
 						</button>
 						<button
 							onClick={() => setShowInput(false)}
-							className="text-[var(--second-color)] border px-3 py-1 rounded-sm hover:text-[var(--main-color)] hover:bg-[var(--second-color)] transition-colors cursor-pointer">
+							className="button-base">
 							Cancel
 						</button>
 					</div>

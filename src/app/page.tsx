@@ -13,7 +13,7 @@ export default function Home() {
 		<>
 			<div className="h-[40vh] lg:h-[50vh] flex flex-col justify-center">
 				<div className="min-w-min p-4">
-					<h1 className="text-center uppercase bg-linear-65 from-purple-400 to-pink-200 bg-clip-text [-webkit-background-clip:text] text-transparent text-4xl md:text-5xl">
+					<h1 className="text-gradient">
 						Welcome to notes-app
 					</h1>
 				</div>
