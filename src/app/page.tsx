@@ -28,10 +28,10 @@ export default function Home() {
 			</p>
 			<div className="flex justify-center mt-7 gap-10 md:mt-10 md:gap-14">
 				<SocialMediaLink href="https://github.com/Paweluser">
-					<FaGithub className="h-18 w-18 md:h-20 md:w-20 text-[var(--third-color)] hover:scale-110 transition-transform" />
+					<FaGithub className="social-media-icon" />
 				</SocialMediaLink>
 				<SocialMediaLink href="https://github.com/Paweluser">
-					<FaLinkedin className="h-18 w-18 md:h-20 md:w-20 text-[var(--third-color)] hover:scale-110 transition-transform" />
+					<FaLinkedin className="social-media-icon" />
 				</SocialMediaLink>
 			</div>
 		</>

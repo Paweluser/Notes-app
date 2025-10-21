@@ -24,6 +24,10 @@
 	@apply block h-[2px] w-[25px] md:w-[35px] bg-[var(--second-color)] rounded-full;
 }
 
+.social-media-icon {
+	@apply h-18 w-18 md:h-20 md:w-20 text-[var(--third-color)] hover:scale-110 transition-transform
+}
+
 body {
 	font-family: Arial, Helvetica, sans-serif;
 }
