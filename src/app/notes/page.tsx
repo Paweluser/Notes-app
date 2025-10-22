@@ -5,6 +5,7 @@ import { FolderList } from '@/components/FolderList';
 import MenuButton from '@/components/MenuButton';
 import SearchBar from '@/components/SearchBar';
 import { FolderTypes } from '@/types/FolderTypes';
+import { NoteTypes } from '@/types/NotesTypes';
 import { useState } from 'react';
 
 export default function NotesPage() {
@@ -13,6 +14,12 @@ export default function NotesPage() {
 	const [newFolderName, setNewFolderName] = useState<FolderTypes['name']>('');
 	const [editingId, setEditingId] = useState<FolderTypes['id'] | null>(null);
 	const [editedName, setEditedName] = useState<FolderTypes['name']>('');
+	const [notes, setNotes] = useState<NoteTypes[]>([]);
+	const [activeFolderId, setActiveFolderId] = useState<
+		FolderTypes['id'] | null
+	>(null);
+	const [newNoteTitle, setNewNoteTitle] = useState('');
+	const [newNoteContent, setNewNoteContent] = useState('');
 
 	function handleAddClick() {
 		setShowInput(true);
@@ -41,12 +48,29 @@ export default function NotesPage() {
 		setEditedName('');
 	}
 
+	function handleAddNote(
+		folderId: FolderTypes['id'],
+		title: string,
+		content: string
+	) {
+		if (!title.trim() || !content.trim()) return;
+		setNotes((prev) => [
+			...prev,
+			{
+				id: crypto.randomUUID(),
+				folderId,
+				title,
+				content,
+			},
+		]);
+		setNewNoteTitle('');
+		setNewNoteContent('');
+	}
+
 	return (
 		<div className="flex flex-col h-full p-4">
 			<nav className="flex justify-between px-2 mb-3 xl:justify-around mt-3 lg:mt-5 xl:mt-14">
-				<h2 className="text-gradient">
-					Notes
-				</h2>
+				<h2 className="text-gradient">Notes</h2>
 				<MenuButton />
 			</nav>
 			<SearchBar />
@@ -61,14 +85,10 @@ export default function NotesPage() {
 							placeholder="Enter folder name..."
 							className="flex-1 px-3 py-2 bg-white/10 text-[var(--third-color)] rounded-xl outline-none backdrop-blur-md placeholder:text-gray-300"
 						/>
-						<button
-							onClick={handleAddConfirm}
-							className="button-base">
+						<button onClick={handleAddConfirm} className="button-base">
 							Add
 						</button>
-						<button
-							onClick={() => setShowInput(false)}
-							className="button-base">
+						<button onClick={() => setShowInput(false)} className="button-base">
 							Cancel
 						</button>
 					</div>
