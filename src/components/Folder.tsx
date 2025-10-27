@@ -33,10 +33,12 @@ export function Folder({
 					{folder.name}
 				</p>
 			)}
-			<div className='flex items-center gap-3 ml-auto'>
+			<div className="flex items-center gap-3 ml-auto">
 				{!isEditing ? (
 					<button
-						onClick={() => onStartRename(folder.id, folder.name)}
+						onClick={() => {
+							onStartRename(folder.id, folder.name);
+						}}
 						className="cursor-pointer ml-auto mt-0.5">
 						<span className="text-xl pt-1 bg-linear-65 from-purple-400 to-pink-200 bg-clip-text [-webkit-background-clip:text] text-transparent md:text-2xl">
 							🖋️
@@ -44,7 +46,9 @@ export function Folder({
 					</button>
 				) : (
 					<button
-						onClick={() => onRenameConfirm(folder.id)}
+						onClick={() => {
+							onRenameConfirm(folder.id);
+						}}
 						className="cursor-pointer ml-auto">
 						<span className="text-xl bg-linear-65 from-purple-400 to-pink-200 bg-clip-text [-webkit-background-clip:text] text-transparent md:text-2xl">
 							✔️
@@ -53,7 +57,9 @@ export function Folder({
 				)}
 				<button
 					className="text-2xl pt-1 text-[var(--third-color)] ml-auto cursor-pointer font-bold"
-					onClick={() => onDelete(folder.id)}>
+					onClick={() => {
+						onDelete(folder.id);
+					}}>
 					X
 				</button>
 			</div>

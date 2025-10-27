@@ -5,7 +5,6 @@ import { FolderList } from '@/components/FolderList';
 import MenuButton from '@/components/MenuButton';
 import SearchBar from '@/components/SearchBar';
 import { FolderTypes } from '@/types/FolderTypes';
-import { NoteTypes } from '@/types/NotesTypes';
 import { useState } from 'react';
 
 export default function NotesPage() {
@@ -14,12 +13,6 @@ export default function NotesPage() {
 	const [newFolderName, setNewFolderName] = useState<FolderTypes['name']>('');
 	const [editingId, setEditingId] = useState<FolderTypes['id'] | null>(null);
 	const [editedName, setEditedName] = useState<FolderTypes['name']>('');
-	const [notes, setNotes] = useState<NoteTypes[]>([]);
-	const [activeFolderId, setActiveFolderId] = useState<
-		FolderTypes['id'] | null
-	>(null);
-	const [newNoteTitle, setNewNoteTitle] = useState('');
-	const [newNoteContent, setNewNoteContent] = useState('');
 
 	function handleAddClick() {
 		setShowInput(true);
@@ -46,25 +39,6 @@ export default function NotesPage() {
 		);
 		setEditingId(null);
 		setEditedName('');
-	}
-
-	function handleAddNote(
-		folderId: FolderTypes['id'],
-		title: string,
-		content: string
-	) {
-		if (!title.trim() || !content.trim()) return;
-		setNotes((prev) => [
-			...prev,
-			{
-				id: crypto.randomUUID(),
-				folderId,
-				title,
-				content,
-			},
-		]);
-		setNewNoteTitle('');
-		setNewNoteContent('');
 	}
 
 	return (
