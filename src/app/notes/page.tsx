@@ -4,15 +4,55 @@ import AddButton from '@/components/AddButton';
 import { FolderList } from '@/components/FolderList';
 import MenuButton from '@/components/MenuButton';
 import SearchBar from '@/components/SearchBar';
-import { FolderTypes } from '@/types/FolderTypes';
+import {
+	FolderTypes,
+	NoteTypes,
+	OnAddNote,
+	OnAddNoteClick,
+	OnDeleteNote,
+	OnSelectFolder,
+	OnToggleFolder,
+} from '@/types/FolderTypes';
 import { useState } from 'react';
 
 export default function NotesPage() {
 	const [folders, setFolders] = useState<FolderTypes[]>([]);
+	const [notes, setNotes] = useState<NoteTypes[]>([]);
+	const [openFolderId, setOpenFolderId] = useState<FolderTypes['id'] | null>(
+		null
+	);
+	const [composerFor, setComposerFor] = useState<FolderTypes['id'] | null>(
+		null
+	);
 	const [showInput, setShowInput] = useState<boolean>(false);
 	const [newFolderName, setNewFolderName] = useState<FolderTypes['name']>('');
 	const [editingId, setEditingId] = useState<FolderTypes['id'] | null>(null);
 	const [editedName, setEditedName] = useState<FolderTypes['name']>('');
+
+	const handleSelectFolder: OnSelectFolder = (id) => {
+		/* opcjonalnie coś ustaw */
+	};
+
+	const handleToggleFolder: OnToggleFolder = (id) =>
+		setOpenFolderId((prev) => (prev === id ? null : id));
+
+	const handleAddNoteClick: OnAddNoteClick = (folderId) => {
+		setOpenFolderId(folderId);
+		setComposerFor(folderId);
+	};
+
+	const handleAddNote: OnAddNote = (folderId, title, content) => {
+		if (!title.trim() || !content.trim()) return;
+		setNotes((prev) => [
+			...prev,
+			{ id: crypto.randomUUID(), folderId, title, content },
+		]);
+		setComposerFor(null);
+	};
+
+	const handleDeleteNote: OnDeleteNote = (noteId) => {
+		setNotes((prev) => prev.filter((n) => n.id !== noteId));
+	};
 
 	function handleAddClick() {
 		setShowInput(true);
@@ -73,6 +113,13 @@ export default function NotesPage() {
 					}`}>
 					<FolderList
 						folders={folders}
+						openFolderId={openFolderId}
+						onToggle={handleToggleFolder}
+						onAddNoteClick={handleAddNoteClick}
+						notes={notes}
+						composerFor={composerFor}
+						onAddNote={handleAddNote}
+						onDeleteNote={handleDeleteNote}
 						onDelete={handleDelete}
 						onStartRename={(id, name) => {
 							setEditedName(name);
@@ -82,6 +129,7 @@ export default function NotesPage() {
 						onRenameConfirm={handleRename}
 						editedName={editedName}
 						setEditedName={setEditedName}
+						onSelect={handleSelectFolder}
 					/>
 				</div>
 			</div>
