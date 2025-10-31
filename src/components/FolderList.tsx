@@ -1,5 +1,4 @@
 import { Folder } from './Folder';
-import { NoteEditor } from './NoteEditor';
 import { NoteList } from './NoteList';
 import type {
 	FolderListProps,
@@ -24,8 +23,6 @@ export function FolderList({
 	onToggle,
 	onAddNoteClick,
 	notes,
-	composerFor,
-	onAddNote,
 	onDeleteNote,
 	...rest
 }: FolderListProps & Extra) {
@@ -45,14 +42,10 @@ export function FolderList({
 						/>
 
 						<div
-							className={`grid transition-[grid-template-rows] duration-300 ease-out
-                          ${
-														isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
-													} overflow-hidden`}>
+							className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+								isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+							} overflow-hidden`}>
 							<div className="min-h-0">
-								{composerFor === f.id && (
-									<NoteEditor folderId={f.id} onAdd={onAddNote} />
-								)}
 								<NoteList
 									folderId={f.id}
 									notes={notes}

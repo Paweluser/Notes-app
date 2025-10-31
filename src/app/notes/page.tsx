@@ -3,6 +3,7 @@
 import AddButton from '@/components/AddButton';
 import { FolderList } from '@/components/FolderList';
 import MenuButton from '@/components/MenuButton';
+import NoteEditor from '@/components/NoteEditor';
 import SearchBar from '@/components/SearchBar';
 import {
 	FolderTypes,
@@ -21,6 +22,7 @@ export default function NotesPage() {
 	const [openFolderId, setOpenFolderId] = useState<FolderTypes['id'] | null>(
 		null
 	);
+	const [composerOpen, setComposerOpen] = useState(false);
 	const [composerFor, setComposerFor] = useState<FolderTypes['id'] | null>(
 		null
 	);
@@ -30,24 +32,22 @@ export default function NotesPage() {
 	const [editedName, setEditedName] = useState<FolderTypes['name']>('');
 
 	const handleSelectFolder: OnSelectFolder = (id) => {
-		/* opcjonalnie coś ustaw */
+		console.log(id);
 	};
 
 	const handleToggleFolder: OnToggleFolder = (id) =>
 		setOpenFolderId((prev) => (prev === id ? null : id));
 
 	const handleAddNoteClick: OnAddNoteClick = (folderId) => {
-		setOpenFolderId(folderId);
 		setComposerFor(folderId);
+		setComposerOpen(true);
 	};
 
 	const handleAddNote: OnAddNote = (folderId, title, content) => {
-		if (!title.trim() || !content.trim()) return;
 		setNotes((prev) => [
 			...prev,
 			{ id: crypto.randomUUID(), folderId, title, content },
 		]);
-		setComposerFor(null);
 	};
 
 	const handleDeleteNote: OnDeleteNote = (noteId) => {
@@ -130,6 +130,12 @@ export default function NotesPage() {
 						editedName={editedName}
 						setEditedName={setEditedName}
 						onSelect={handleSelectFolder}
+					/>
+					<NoteEditor
+						open={composerOpen}
+						folderId={composerFor}
+						onClose={() => setComposerOpen(false)}
+						onAdd={handleAddNote}
 					/>
 				</div>
 			</div>

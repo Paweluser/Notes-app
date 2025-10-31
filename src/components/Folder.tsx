@@ -5,7 +5,6 @@ export function Folder({
 	onDelete,
 	onStartRename,
 	onRenameConfirm,
-	onSelect,
 	onToggle,
 	onAddNoteClick,
 	editingId,
@@ -20,7 +19,6 @@ export function Folder({
 				className="flex items-center gap-2 p-3 rounded-full m-3 mx-3 transition-colors duration-300 hover:bg-[rgba(255,255,255,0.1)] cursor-pointer"
 				onClick={() => {
 					if (!isEditing) {
-						onSelect(folder.id);
 						onToggle(folder.id);
 					}
 				}}>
