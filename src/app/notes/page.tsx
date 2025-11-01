@@ -54,6 +54,15 @@ export default function NotesPage() {
 		setNotes((prev) => prev.filter((n) => n.id !== noteId));
 	};
 
+	const handleUpdateNote = (
+		noteId: string,
+		patch: { title?: string; content?: string }
+	) => {
+		setNotes((prev) =>
+			prev.map((n) => (n.id === noteId ? { ...n, ...patch } : n))
+		);
+	};
+
 	function handleAddClick() {
 		setShowInput(true);
 		setNewFolderName('');
@@ -120,6 +129,7 @@ export default function NotesPage() {
 						composerFor={composerFor}
 						onAddNote={handleAddNote}
 						onDeleteNote={handleDeleteNote}
+						onUpdateNote={handleUpdateNote}
 						onDelete={handleDelete}
 						onStartRename={(id, name) => {
 							setEditedName(name);

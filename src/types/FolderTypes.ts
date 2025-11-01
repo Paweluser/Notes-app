@@ -62,9 +62,10 @@ export type NoteTypes = {
 };
 
 export type NoteListProps = {
-	folderId: FolderTypes['id'];
-	notes: NoteTypes[];
-	onDelete: OnDeleteNote;
+  folderId: FolderTypes['id'];
+  notes: NoteTypes[];
+  onDeleteNote: OnDeleteNote;          
+  onUpdateNote?: OnUpdateNote;         
 };
 
 export type NoteEditorDrawerProps = {
@@ -73,3 +74,7 @@ export type NoteEditorDrawerProps = {
 	onClose: () => void;
 	onAdd: OnAddNote;
 };
+
+export type OnEditNote = (noteId: NoteTypes['id']) => void;
+
+export type OnRenameNoteConfirm = (noteId: NoteTypes['id'], patch: Partial<Pick<NoteTypes, 'title' | 'content'>>) => void;

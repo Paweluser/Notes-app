@@ -24,6 +24,7 @@ export function FolderList({
 	onAddNoteClick,
 	notes,
 	onDeleteNote,
+	onUpdateNote,
 	...rest
 }: FolderListProps & Extra) {
 	return (
@@ -49,7 +50,8 @@ export function FolderList({
 								<NoteList
 									folderId={f.id}
 									notes={notes}
-									onDelete={onDeleteNote}
+									onDeleteNote={onDeleteNote}
+									onUpdateNote={onUpdateNote}
 								/>
 							</div>
 						</div>
