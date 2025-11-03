@@ -35,7 +35,10 @@ export function NoteList({
 					return (
 						<div
 							key={note.id}
-							className="bg-[var(--second-color)]/20 p-3 rounded-xl backdrop-blur-md transition-all">
+							className="p-3 mx-5 rounded-xl transition-colors duration-300 hover:bg-[rgba(255,255,255,0.1)] cursor-pointer">
+							<span className="text-2xl bg-linear-65 from-purple-400 to-pink-200 bg-clip-text [-webkit-background-clip:text] text-transparent md:text-3xl">
+								🗒️
+							</span>
 							{isEditing ? (
 								<div className="flex flex-col gap-2">
 									<input
@@ -77,12 +80,12 @@ export function NoteList({
 												handleEdit(note.id, note.title, note.content)
 											}
 											className="cursor-pointer hover:scale-110 transition-transform">
-											<Pencil className="w-5 h-5 text-[var(--third-color)]" />
+											<Pencil className="notes-icon" />
 										</button>
 										<button
 											onClick={() => onDeleteNote(note.id)}
 											className="cursor-pointer hover:scale-110 transition-transform">
-											<X className="w-5 h-5 text-[var(--third-color)]" />
+											<X className="notes-icon" />
 										</button>
 									</div>
 								</div>

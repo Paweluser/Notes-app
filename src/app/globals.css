@@ -25,7 +25,11 @@
 }
 
 .social-media-icon {
-	@apply h-18 w-18 md:h-20 md:w-20 text-[var(--third-color)] hover:scale-110 transition-transform
+	@apply h-18 w-18 md:h-20 md:w-20 text-[var(--third-color)] hover:scale-110 transition-transform;
+}
+
+.notes-icon {
+	@apply w-6 h-6 md:w-7 md:h-7 text-[var(--third-color)] transition-transform hover:scale-120;
 }
 
 body {

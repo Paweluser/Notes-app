@@ -1,3 +1,4 @@
+import { Pencil, Check, Plus, X } from 'lucide-react';
 import type { FolderProps } from '@/types/FolderTypes';
 
 export function Folder({
@@ -16,7 +17,7 @@ export function Folder({
 	return (
 		<>
 			<div
-				className="flex items-center gap-2 p-3 rounded-full m-3 mx-3 transition-colors duration-300 hover:bg-[rgba(255,255,255,0.1)] cursor-pointer"
+				className="flex items-center gap-2 p-3 rounded-xl m-3 mx-3 transition-colors duration-300 hover:bg-[rgba(255,255,255,0.1)] cursor-pointer"
 				onClick={() => {
 					if (!isEditing) {
 						onToggle(folder.id);
@@ -47,13 +48,12 @@ export function Folder({
 				<div className="flex items-center gap-3 ml-auto">
 					{!isEditing ? (
 						<button
-							onClick={() => {
+							onClick={(e) => {
 								onStartRename(folder.id, folder.name);
+								e.stopPropagation();
 							}}
 							className="cursor-pointer ml-auto mt-0.5">
-							<span className="text-xl pt-1 bg-linear-65 from-purple-400 to-pink-200 bg-clip-text [-webkit-background-clip:text] text-transparent md:text-2xl">
-								🖋️
-							</span>
+							<Pencil className="notes-icon" />
 						</button>
 					) : (
 						<button
@@ -61,26 +61,23 @@ export function Folder({
 								onRenameConfirm(folder.id);
 							}}
 							className="cursor-pointer ml-auto">
-							<span className="text-xl bg-linear-65 from-purple-400 to-pink-200 bg-clip-text [-webkit-background-clip:text] text-transparent md:text-2xl">
-								✔️
-							</span>
+							<Check className="notes-icon" />
 						</button>
 					)}
 					<button
-						onClick={() => onAddNoteClick(folder.id)}
+						onClick={(e) => {
+							e.stopPropagation();
+							onAddNoteClick(folder.id);
+						}}
 						className="cursor-pointer ml-auto">
-						<span className="text-xl bg-linear-65 from-purple-400 to-pink-200 bg-clip-text [-webkit-background-clip:text] text-transparent md:text-2xl">
-							➕
-						</span>
+						<Plus className="notes-icon" />
 					</button>
 					<button
 						className="cursor-pointer ml-auto"
 						onClick={() => {
 							onDelete(folder.id);
 						}}>
-						<span className="text-xl bg-linear-65 from-purple-400 to-pink-200 bg-clip-text [-webkit-background-clip:text] text-transparent md:text-2xl">
-							✖️
-						</span>
+						<X className="notes-icon" />
 					</button>
 				</div>
 			</div>
