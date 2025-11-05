@@ -52,7 +52,7 @@ export type FolderListProps = Omit<FolderProps, 'folder' | 'isOpen'> & {
 
 export type NoteEditorProps = {
 	folderId: FolderTypes['id'];
-	onAdd: OnAddNote;
+	onAdd?: OnAddNote;
 };
 
 export type NoteTypes = {
@@ -73,7 +73,14 @@ export type NoteEditorDrawerProps = {
 	open: boolean;
 	folderId: FolderTypes['id'] | null;
 	onClose: () => void;
-	onAdd: OnAddNote;
+	onAdd?: OnAddNote;
+	mode?: 'create' | 'edit';
+	noteId?: NoteTypes['id'];
+	initialTitle?: NoteTypes['title'];
+	initialContent?: NoteTypes['content'];
+	onUpdate?: OnUpdateNote;
+	submitLabel?: string;
+	showHeader?: boolean; 
 };
 
 export type OnEditNote = (noteId: NoteTypes['id']) => void;
