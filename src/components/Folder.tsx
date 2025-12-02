@@ -41,7 +41,7 @@ export function Folder({
 						placeholder="New folder name..."
 					/>
 				) : (
-					<p className="text-[var(--third-color)] pt-1 md:text-xl">
+					<p className="text-[var(--third-color)] pt-1 md:text-xl overflow-x-hidden">
 						{folder.name}
 					</p>
 				)}

@@ -80,12 +80,16 @@ export default function NoteEditor({
 						<button type="submit" className="button-base button-add">
 							{submitLabel ?? (mode === 'edit' ? 'Save changes' : 'Add note')}
 						</button>
-						<button
-							type="button"
-							onClick={onClose}
-							className="button-base button-cancel">
-							Cancel
-						</button>
+						{submitLabel ?? mode === 'edit' ? (
+							''
+						) : (
+							<button
+								type="button"
+								onClick={onClose}
+								className="button-base button-cancel">
+								Cancel
+							</button>
+						)}
 					</div>
 				</form>
 			</div>

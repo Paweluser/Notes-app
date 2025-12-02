@@ -51,7 +51,7 @@ export function NoteList({
 								<div className="flex gap-3 ml-4">
 									<button
 										onClick={() => onDeleteNote(note.id)}
-										className="cursor-pointer hover:scale-110 transition-transform">
+										className="cursor-pointer transition-transform">
 										<X className="notes-icon" />
 									</button>
 								</div>
