@@ -15,6 +15,7 @@ import {
 	OnToggleFolder,
 } from '@/types/FolderTypes';
 import { useState } from 'react';
+import { applySearch } from '@/utils/searchFilter';
 
 export default function NotesPage() {
 	const [folders, setFolders] = useState<FolderTypes[]>([]);
@@ -30,6 +31,7 @@ export default function NotesPage() {
 	const [newFolderName, setNewFolderName] = useState<FolderTypes['name']>('');
 	const [editingId, setEditingId] = useState<FolderTypes['id'] | null>(null);
 	const [editedName, setEditedName] = useState<FolderTypes['name']>('');
+	const [searchQuery, setSearchQuery] = useState('');
 
 	const handleSelectFolder: OnSelectFolder = (id) => {
 		console.log(id);
@@ -90,13 +92,19 @@ export default function NotesPage() {
 		setEditedName('');
 	}
 
+	const { folders: visibleFolders, notes: visibleNotes } = applySearch(
+		folders,
+		notes,
+		searchQuery
+	);
+
 	return (
 		<div className="flex flex-col h-full p-4">
 			<nav className="flex justify-between px-2 mb-3 xl:justify-around mt-3 lg:mt-5 xl:mt-14">
 				<h2 className="text-gradient">Notes</h2>
 				<MenuButton />
 			</nav>
-			<SearchBar />
+			<SearchBar value={searchQuery} onChange={setSearchQuery} />
 			<div className="relative flex flex-col gap-2 w-full h-2/3 mt-3 xl:w-2/3 xl:mx-auto xl:mt-6 bg-[var(--second-color)]/20 backdrop-blur rounded-2xl shadow-2xl">
 				{!showInput && <AddButton onAdd={handleAddClick} />}
 				{showInput && (
@@ -121,11 +129,11 @@ export default function NotesPage() {
 						showInput ? 'md:mt-1' : 'mt-10 md:mt-12'
 					}`}>
 					<FolderList
-						folders={folders}
+						folders={visibleFolders}
+						notes={visibleNotes}
 						openFolderId={openFolderId}
 						onToggle={handleToggleFolder}
 						onAddNoteClick={handleAddNoteClick}
-						notes={notes}
 						composerFor={composerFor}
 						onAddNote={handleAddNote}
 						onDeleteNote={handleDeleteNote}
