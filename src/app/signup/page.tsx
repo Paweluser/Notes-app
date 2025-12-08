@@ -14,7 +14,7 @@ export default function SignUp() {
 				<h2 className="text-gradient mt-12 2xs:mt-6">
 					Create account
 				</h2>
-				<Form>
+				<Form submitLabel='Sign up'>
 					<p className="text-xl text-[var(--second-color)] mt-4 md:text-2xl md:mt-8">
 						Do you have an account?
 					</p>

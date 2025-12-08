@@ -1,4 +1,5 @@
-import type { FolderTypes, NoteTypes } from '@/types/FolderTypes';
+import { FolderTypes } from '@/types/FolderTypes';
+import { NoteTypes } from '@/types/NotesType';
 
 export function applySearch(
 	folders: FolderTypes[],

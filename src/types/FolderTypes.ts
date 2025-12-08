@@ -3,8 +3,8 @@ export type FolderTypes = { id: string; name: string };
 export type OnDeleteFolder = (id: FolderTypes['id']) => void;
 
 export type OnStartRename = (
-	id: FolderTypes['id'],
-	currentName: FolderTypes['name']
+  id: FolderTypes['id'],
+  currentName: FolderTypes['name']
 ) => void;
 
 export type OnRenameConfirm = (id: FolderTypes['id']) => void;
@@ -15,77 +15,16 @@ export type OnToggleFolder = (id: FolderTypes['id']) => void;
 
 export type OnAddNoteClick = (folderId: FolderTypes['id']) => void;
 
-export type OnAddNote = (
-	folderId: FolderTypes['id'],
-	title: string,
-	content: string
-) => void;
-
-export type OnDeleteNote = (noteId: NoteTypes['id']) => void;
-
-export type OnUpdateNote = (
-	noteId: NoteTypes['id'],
-	patch: Partial<Pick<NoteTypes, 'title' | 'content'>>
-) => void;
-
 export type FolderProps = {
-	folder: FolderTypes;
-	onDelete: OnDeleteFolder;
-	onStartRename: OnStartRename;
-	onRenameConfirm: OnRenameConfirm;
-	onSelect: OnSelectFolder;
-	onToggle: OnToggleFolder;
-	onAddNoteClick: OnAddNoteClick;
-	editingId: FolderTypes['id'] | null;
-	editedName: FolderTypes['name'];
-	setEditedName: (name: FolderTypes['name']) => void;
-	isOpen: boolean;
+  folder: FolderTypes;
+  onDelete: OnDeleteFolder;
+  onStartRename: OnStartRename;
+  onRenameConfirm: OnRenameConfirm;
+  onSelect: OnSelectFolder;
+  onToggle: OnToggleFolder;
+  onAddNoteClick: OnAddNoteClick;
+  editingId: FolderTypes['id'] | null;
+  editedName: FolderTypes['name'];
+  setEditedName: (name: FolderTypes['name']) => void;
+  isOpen: boolean;
 };
-
-export type FolderListProps = Omit<FolderProps, 'folder' | 'isOpen'> & {
-	folders: FolderTypes[];
-	openFolderId: FolderTypes['id'] | null;
-	notes: NoteTypes[];
-	onDeleteNote: OnDeleteNote;
-	onUpdateNote?: OnUpdateNote;
-};
-
-export type NoteEditorProps = {
-	folderId: FolderTypes['id'];
-	onAdd?: OnAddNote;
-};
-
-export type NoteTypes = {
-	id: string;
-	folderId: FolderTypes['id'];
-	title: string;
-	content: string;
-};
-
-export type NoteListProps = {
-	folderId: FolderTypes['id'];
-	notes: NoteTypes[];
-	onDeleteNote: OnDeleteNote;
-	onUpdateNote?: OnUpdateNote;
-};
-
-export type NoteEditorDrawerProps = {
-	open: boolean;
-	folderId: FolderTypes['id'] | null;
-	onClose: () => void;
-	onAdd?: OnAddNote;
-	mode?: 'create' | 'edit';
-	noteId?: NoteTypes['id'];
-	initialTitle?: NoteTypes['title'];
-	initialContent?: NoteTypes['content'];
-	onUpdate?: OnUpdateNote;
-	submitLabel?: string;
-	showHeader?: boolean; 
-};
-
-export type OnEditNote = (noteId: NoteTypes['id']) => void;
-
-export type OnRenameNoteConfirm = (
-	noteId: NoteTypes['id'],
-	patch: Partial<Pick<NoteTypes, 'title' | 'content'>>
-) => void;

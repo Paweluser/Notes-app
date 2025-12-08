@@ -1,11 +1,11 @@
 import { Folder } from './Folder';
 import { NoteList } from './NoteList';
-import type {
+import{
 	FolderListProps,
 	NoteTypes,
 	OnAddNote,
 	OnDeleteNote,
-} from '@/types/FolderTypes';
+} from '@/types/NotesType';
 
 type Extra = {
 	openFolderId: string | null;

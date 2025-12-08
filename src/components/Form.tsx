@@ -1,11 +1,8 @@
 import React from 'react';
 import FormButtonPage from './FormButtonPage';
+import { FormProps } from '@/types/FormTypes';
 
-export default function Form({
-	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
+export default function Form({ children, submitLabel }: FormProps) {
 	return (
 		<form className="flex flex-col justify-center items-center mt-8 gap-4 mx-4 p-4 border-2 border-[var(--third-color)] rounded-2xl bg-[var(--main-color)] md:mx-6 md:p-6 lg:mx-10 xl:mx-[25%]">
 			<div className="flex flex-col m-2 w-full md:w-3/4">
@@ -44,7 +41,7 @@ export default function Form({
 				<button
 					type="submit"
 					className="border px-3 py-1 rounded-sm hover:text-[var(--main-color)] hover:bg-[var(--second-color)] transition-colors cursor-pointer">
-					Sign up
+					{submitLabel}
 				</button>
 			</div>
 		</form>

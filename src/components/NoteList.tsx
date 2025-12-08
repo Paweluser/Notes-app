@@ -2,7 +2,7 @@
 import { FileText, X } from 'lucide-react';
 import { useState } from 'react';
 import NoteEditor from '@/components/NoteEditor';
-import type { NoteListProps } from '@/types/FolderTypes';
+import type { NoteListProps } from '@/types/NotesType';
 
 export function NoteList({
 	folderId,

@@ -14,7 +14,7 @@ export default function LogIn() {
 				<h2 className="text-gradient mt-12 2xs:mt-6">
 					Log in
 				</h2>
-				<Form>
+				<Form submitLabel='Log in'>
 					<p className="text-xl text-[var(--second-color)] mt-4 md:text-2xl md:mt-8">
 						Don&rsquo;t have an account?
 					</p>

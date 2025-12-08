@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import type { NoteEditorDrawerProps } from '@/types/FolderTypes';
+import type { NoteEditorDrawerProps } from '@/types/NotesType';
 
 export default function NoteEditor({
 	open,
