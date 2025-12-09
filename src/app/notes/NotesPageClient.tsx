@@ -109,7 +109,7 @@ export default function NotesPageClient({
 
 			<SearchBar value={searchQuery} onChange={setSearchQuery} />
 
-			<div className="relative flex flex-col gap-2 w-full h-2/3 mt-3 xl:w-2/3 xl:mx-auto xl:mt-6 bg-[var(--second-color)]/20 backdrop-blur rounded-2xl shadow-2xl">
+			<div className="relative flex flex-col gap-2 w-full h-2/3 mt-3 xl:w-2/3 xl:mx-auto xl:mt-6 bg-[var(--panel-color)] rounded-2xl shadow-2xl">
 				{!showInput && <AddButton onAdd={handleAddClick} />}
 
 				{showInput && (

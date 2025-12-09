@@ -1,4 +1,5 @@
-import { FolderTypes, NoteTypes } from "./FolderTypes";
+import { FolderTypes } from "./FolderTypes";
+import { NoteTypes } from "./NotesType";
 
 export type NotesPageClientProps = {
     initialFolders: FolderTypes[];

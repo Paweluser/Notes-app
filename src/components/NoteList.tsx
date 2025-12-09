@@ -37,18 +37,15 @@ export function NoteList({
 						<div
 							key={note.id}
 							onClick={() => startEdit(note.id, note.title, note.content)}
-							className="p-3 mx-5 rounded-xl transition-colors duration-300 hover:bg-[rgba(255,255,255,0.1)] cursor-pointer">
-							<div className="flex items-center justify-between">
-								<div className="flex items-center gap-3">
-									<FileText className="w-6 h-6 text-[var(--third-color)]" />
-									<div>
-										<h3 className="font-semibold text-[var(--third-color)]">
-											{note.title}
-										</h3>
-									</div>
+							className="p-3 md:mx-5 rounded-xl transition-colors duration-300 hover:bg-[rgba(255,255,255,0.1)] cursor-pointer max-[600px]:mx-3">
+							<div className="flex items-center gap-1">
+								<div className="flex items-center gap-3 flex-1 min-w-0">
+									<FileText className="w-6 h-6 flex-shrink-0 text-[var(--third-color)]" />
+									<h3 className="font-semibold text-[var(--third-color)] break-all">
+										{note.title}
+									</h3>
 								</div>
-
-								<div className="flex gap-3 ml-4">
+								<div className="flex gap-3 flex-shrink-0 ml-1">
 									<button
 										onClick={() => onDeleteNote(note.id)}
 										className="cursor-pointer transition-transform">
@@ -56,6 +53,7 @@ export function NoteList({
 									</button>
 								</div>
 							</div>
+
 							{isEditing && (
 								<NoteEditor
 									open={true}
