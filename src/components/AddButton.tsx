@@ -1,6 +1,7 @@
 import { Plus } from 'lucide-react';
+import { OnAddFolder } from '@/types/FolderTypes';
 
-export default function AddButton({ onAdd }: { onAdd: () => void }) {
+export default function AddButton({ onAdd }: { onAdd: OnAddFolder }) {
 	return (
 		<button
 			onClick={onAdd}

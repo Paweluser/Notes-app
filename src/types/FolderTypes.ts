@@ -1,6 +1,10 @@
+import { FolderListProps, NoteTypes, OnAddNote, OnDeleteNote } from "./NotesType";
+
 export type FolderTypes = { id: string; name: string };
 
 export type OnDeleteFolder = (id: FolderTypes['id']) => void;
+
+export type OnAddFolder = () => void;
 
 export type OnStartRename = (
   id: FolderTypes['id'],
@@ -27,4 +31,14 @@ export type FolderProps = {
   editedName: FolderTypes['name'];
   setEditedName: (name: FolderTypes['name']) => void;
   isOpen: boolean;
+};
+
+export type FolderListControllerProps = {
+	openFolderId: string | null;
+	onToggle: FolderListProps['onToggle'];
+	onAddNoteClick: FolderListProps['onAddNoteClick'];
+	notes: NoteTypes[];
+	composerFor: string | null;
+	onAddNote: OnAddNote;
+	onDeleteNote: OnDeleteNote;
 };

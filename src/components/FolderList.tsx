@@ -1,21 +1,7 @@
 import { Folder } from './Folder';
 import { NoteList } from './NoteList';
-import{
-	FolderListProps,
-	NoteTypes,
-	OnAddNote,
-	OnDeleteNote,
-} from '@/types/NotesType';
-
-type Extra = {
-	openFolderId: string | null;
-	onToggle: FolderListProps['onToggle'];
-	onAddNoteClick: FolderListProps['onAddNoteClick'];
-	notes: NoteTypes[];
-	composerFor: string | null;
-	onAddNote: OnAddNote;
-	onDeleteNote: OnDeleteNote;
-};
+import { FolderListProps } from '@/types/NotesType';
+import { FolderListControllerProps } from '@/types/FolderTypes';
 
 export function FolderList({
 	folders,
@@ -26,7 +12,7 @@ export function FolderList({
 	onDeleteNote,
 	onUpdateNote,
 	...rest
-}: FolderListProps & Extra) {
+}: FolderListProps & FolderListControllerProps) {
 	return (
 		<div className="w-full">
 			{folders.map((f) => {

@@ -15,6 +15,9 @@ import { useState } from 'react';
 import { applySearch } from '@/utils/searchFilter';
 import { NotesPageClientProps } from '@/types/NotesPageClient';
 import { NoteTypes, OnAddNote, OnDeleteNote } from '@/types/NotesType';
+import { ComposerType } from '@/types/ComposerTypes';
+import { ShowInputType } from '@/types/InputTypes';
+import { SearchQueryType } from '@/types/SearchQueryTypes';
 
 export default function NotesPageClient({
 	initialFolders,
@@ -25,15 +28,15 @@ export default function NotesPageClient({
 	const [openFolderId, setOpenFolderId] = useState<FolderTypes['id'] | null>(
 		null
 	);
-	const [composerOpen, setComposerOpen] = useState(false);
+	const [composerOpen, setComposerOpen] = useState<ComposerType>(false);
 	const [composerFor, setComposerFor] = useState<FolderTypes['id'] | null>(
 		null
 	);
-	const [showInput, setShowInput] = useState<boolean>(false);
+	const [showInput, setShowInput] = useState<ShowInputType>(false);
 	const [newFolderName, setNewFolderName] = useState<FolderTypes['name']>('');
 	const [editingId, setEditingId] = useState<FolderTypes['id'] | null>(null);
 	const [editedName, setEditedName] = useState<FolderTypes['name']>('');
-	const [searchQuery, setSearchQuery] = useState('');
+	const [searchQuery, setSearchQuery] = useState<SearchQueryType>('');
 
 	const handleSelectFolder: OnSelectFolder = (id) => {
 		console.log(id);
