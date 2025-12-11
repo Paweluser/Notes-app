@@ -1,9 +1,10 @@
 'use client';
 import { useState } from 'react';
 import { LeftPanel } from './LeftPanel';
+import { MenuButtonType } from '@/types/MenuButtonTypes';
 
 export default function MenuButton() {
-	const [isOpen, setIsOpen] = useState<boolean>(false);
+	const [isOpen, setIsOpen] = useState<MenuButtonType>(false);
 
 	function handleToggleMenu() {
 		setIsOpen(true);

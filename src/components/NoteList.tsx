@@ -2,7 +2,7 @@
 import { FileText, X } from 'lucide-react';
 import { useState } from 'react';
 import NoteEditor from '@/components/NoteEditor';
-import type { NoteListProps } from '@/types/NotesType';
+import type { NoteListProps, NoteTypes } from '@/types/NotesType';
 
 export function NoteList({
 	folderId,
@@ -10,9 +10,9 @@ export function NoteList({
 	onDeleteNote,
 	onUpdateNote,
 }: NoteListProps) {
-	const [editingId, setEditingId] = useState<string | null>(null);
-	const [editedTitle, setEditedTitle] = useState('');
-	const [editedContent, setEditedContent] = useState('');
+	const [editingId, setEditingId] = useState<NoteTypes['id'] | null>(null);
+	const [editedTitle, setEditedTitle] = useState<NoteTypes['title']>('');
+	const [editedContent, setEditedContent] = useState<NoteTypes['content']>('');
 
 	const startEdit = (id: string, title: string, content: string) => {
 		setEditingId(id);

@@ -109,63 +109,66 @@ export default function NotesPageClient({
 				<h2 className="text-gradient">Notes</h2>
 				<MenuButton />
 			</nav>
-
 			<SearchBar value={searchQuery} onChange={setSearchQuery} />
+			<div className="relative flex flex-col gap-2 w-full h-2/3 mt-3 xl:w-2/3 xl:mx-auto xl:mt-6 rounded-2xl bg-[var(--panel-color)]/40 border border-white/20 backdrop-blur overflow-hidden">
+				<div className="relative z-10 flex flex-col gap-2 h-full">
+					{!showInput && <AddButton onAdd={handleAddClick} />}
 
-			<div className="relative flex flex-col gap-2 w-full h-2/3 mt-3 xl:w-2/3 xl:mx-auto xl:mt-6 bg-[var(--panel-color)] rounded-2xl shadow-2xl">
-				{!showInput && <AddButton onAdd={handleAddClick} />}
+					{showInput && (
+						<div className="flex flex-wrap items-center gap-2 mt-2 mx-2 z-10 md:mx-28 md:mt-4 2xl:mx-40">
+							<input
+								type="text"
+								value={newFolderName}
+								onChange={(e) => setNewFolderName(e.target.value)}
+								placeholder="Enter folder name..."
+								className="flex-1 px-3 py-2 bg-white/10 text-[var(--third-color)] rounded-xl outline-none backdrop-blur-md placeholder:text-gray-300"
+							/>
+							<button onClick={handleAddConfirm} className="button-base">
+								Add
+							</button>
+							<button
+								onClick={() => setShowInput(false)}
+								className="button-base">
+								Cancel
+							</button>
+						</div>
+					)}
 
-				{showInput && (
-					<div className="flex flex-wrap items-center gap-2 mt-2 mx-2 z-10 md:mx-28 md:mt-4 2xl:mx-40">
-						<input
-							type="text"
-							value={newFolderName}
-							onChange={(e) => setNewFolderName(e.target.value)}
-							placeholder="Enter folder name..."
-							className="flex-1 px-3 py-2 bg-white/10 text-[var(--third-color)] rounded-xl outline-none backdrop-blur-md placeholder:text-gray-300"
+					<div
+						className={`overflow-y-auto ${
+							showInput ? 'md:mt-1' : 'mt-10 md:mt-12'
+						}`}>
+						<FolderList
+							folders={visibleFolders}
+							notes={visibleNotes}
+							openFolderId={openFolderId}
+							onToggle={handleToggleFolder}
+							onAddNoteClick={handleAddNoteClick}
+							composerFor={composerFor}
+							onAddNote={handleAddNote}
+							onDeleteNote={handleDeleteNote}
+							onUpdateNote={handleUpdateNote}
+							onDelete={handleDelete}
+							onStartRename={(id, name) => {
+								setEditedName(name);
+								setEditingId(id);
+							}}
+							editingId={editingId}
+							onRenameConfirm={handleRename}
+							editedName={editedName}
+							setEditedName={setEditedName}
+							onSelect={handleSelectFolder}
 						/>
-						<button onClick={handleAddConfirm} className="button-base">
-							Add
-						</button>
-						<button onClick={() => setShowInput(false)} className="button-base">
-							Cancel
-						</button>
+
+						<NoteEditor
+							open={composerOpen}
+							folderId={composerFor}
+							onClose={() => setComposerOpen(false)}
+							onAdd={handleAddNote}
+						/>
 					</div>
-				)}
-
-				<div
-					className={`overflow-y-auto ${
-						showInput ? 'md:mt-1' : 'mt-10 md:mt-12'
-					}`}>
-					<FolderList
-						folders={visibleFolders}
-						notes={visibleNotes}
-						openFolderId={openFolderId}
-						onToggle={handleToggleFolder}
-						onAddNoteClick={handleAddNoteClick}
-						composerFor={composerFor}
-						onAddNote={handleAddNote}
-						onDeleteNote={handleDeleteNote}
-						onUpdateNote={handleUpdateNote}
-						onDelete={handleDelete}
-						onStartRename={(id, name) => {
-							setEditedName(name);
-							setEditingId(id);
-						}}
-						editingId={editingId}
-						onRenameConfirm={handleRename}
-						editedName={editedName}
-						setEditedName={setEditedName}
-						onSelect={handleSelectFolder}
-					/>
-
-					<NoteEditor
-						open={composerOpen}
-						folderId={composerFor}
-						onClose={() => setComposerOpen(false)}
-						onAdd={handleAddNote}
-					/>
 				</div>
+				<div className=" pointer-events-none absolute inset-x-0 bottom-0 h-[25%] z-0 bg-gradient-to-t from-[var(--main-color)] via-[var(--main-color)]/80 to-transparent" />
 			</div>
 		</div>
 	);

@@ -20,7 +20,6 @@ export type OnUpdateNote = (
   patch: Partial<Pick<NoteTypes, 'title' | 'content'>>
 ) => void;
 
-// FolderListProps tu, bo dotyczy też notatek
 export type FolderListProps = Omit<FolderProps, 'folder' | 'isOpen'> & {
   folders: FolderTypes[];
   openFolderId: FolderTypes['id'] | null;

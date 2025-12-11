@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import type { NoteEditorDrawerProps } from '@/types/NotesType';
+import type { NoteEditorDrawerProps, NoteTypes } from '@/types/NotesType';
 
 export default function NoteEditor({
 	open,
@@ -15,8 +15,8 @@ export default function NoteEditor({
 	submitLabel,
 	showHeader = true,
 }: NoteEditorDrawerProps) {
-	const [title, setTitle] = useState(initialTitle);
-	const [content, setContent] = useState(initialContent);
+	const [title, setTitle] = useState<NoteTypes['title']>(initialTitle);
+	const [content, setContent] = useState<NoteTypes['content']>(initialContent);
 
 	useEffect(() => {
 		if (open) {
