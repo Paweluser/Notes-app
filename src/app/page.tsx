@@ -18,9 +18,9 @@ export default function Home() {
 					</h1>
 				</div>
 				<div className="flex items-center justify-center text-[var(--second-color)] space-x-4 mt-5 text-xl md:mt-8 md:text-2xl">
-					<FormButtonPage href="/login">Log in</FormButtonPage>
+					<FormButtonPage href="/notes">Log in</FormButtonPage>
 					<span className="h-full w-px bg-[var(--second-color)]" />
-					<FormButtonPage href="/signup">Sign up</FormButtonPage>
+					<FormButtonPage href="/notes">Sign up</FormButtonPage>
 				</div>
 			</div>
 			<p className="text-[var(--second-color)] text-xl md:text-2xl text-center">

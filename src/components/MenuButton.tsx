@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { LeftPanel } from './LeftPanel';
 import { MenuButtonType } from '@/types/MenuButtonTypes';
+import Avatar from '../../public/Avatar.jpg';
 
 export default function MenuButton() {
 	const [isOpen, setIsOpen] = useState<MenuButtonType>(false);
@@ -22,7 +23,7 @@ export default function MenuButton() {
 				<span className="menu-line transition-transform duration-300 scale-x-60 group-hover:scale-x-100 origin-right"></span>
 			</button>
 			<LeftPanel
-				avatarUrl="/Avatar.jpg"
+				avatarUrl={Avatar.src}
 				userName="User"
 				onBack={() => setIsOpen(false)}
 				onLogout={() => setIsOpen(false)}
